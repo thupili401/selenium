@@ -1,0 +1,17 @@
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+driver=webdriver.Chrome()
+driver.maximize_window()
+driver.implicitly_wait(10)
+driver.get("https://www.abhibus.com/bus_search/Hyderabad/3/Bangalore/7/04-09-2024/O")
+driver.find_element(By.XPATH,"//div[.='Bus Partner']").click()
+bus=driver.find_elements(By.XPATH,"//div[@class='scrollable-container  primary ']/div/label")
+time.sleep(3)
+for i in bus:
+    print(i.text)
+time.sleep(3)
+driver.find_element(By.XPATH,"//div[@class='scrollable-container  primary ']/descendant::input[1]").click()
+time.sleep(3)
+driver.quit()
